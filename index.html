@@ -678,9 +678,12 @@ document.querySelectorAll('.kmbtn').forEach(function(b){b.addEventListener('clic
 document.querySelectorAll('.bmbtn').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('.bmbtn').forEach(function(x){x.classList.remove('active');});
   b.classList.add('active');brandMonth=parseInt(b.dataset.bm,10);renderBrand();});});
-document.querySelectorAll('.ppbtn').forEach(function(b){b.addEventListener('click',function(){
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.ppbtn');
+  if(!b)return;
   document.querySelectorAll('.ppbtn').forEach(function(x){x.classList.remove('active');});
-  b.classList.add('active');prodPeriod=parseInt(b.dataset.pp,10);renderBrand();});});
+  b.classList.add('active');prodPeriod=parseInt(b.dataset.pp,10);renderBrand();
+});
 document.querySelectorAll('.dtbtn').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('.dtbtn').forEach(function(x){x.classList.remove('active');});
   b.classList.add('active');detailChan=b.dataset.dc;renderDetail();});});
